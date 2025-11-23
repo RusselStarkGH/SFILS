@@ -1,0 +1,41 @@
+DROP SCHEMA IF EXISTS csce360project;
+CREATE SCHEMA csce360project;
+USE csce360project;
+
+CREATE TABLE patron_types (
+	patron_type_code int NOT NULL,
+    patron_type_def varchar(10) NOT NULL,
+    PRIMARY KEY (patron_type_code)
+    );
+    
+CREATE TABLE libraries (
+	library_code varchar(30) NOT NULL,
+    library_name varchar(30) NOT NULL,
+    PRIMARY KEY (library_code)
+    );
+
+CREATE TABLE notification_modes (
+	notification_code varchar(10) NOT NULL,
+    notification_desc varchar(15) NOT NULL,
+    PRIMARY KEY (notification_code)
+    );
+
+CREATE TABLE patron_profiles (
+	profile_id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    age_range varchar(30) NOT NULL,
+    total_checkouts int NOT NULL,
+    total_renewals int NOT NULL,
+    year_registered int NOT NULL,
+    sf_resident bool NOT NULL,
+    has_email bool NOT NULL,
+    last_active date NOT NULL,
+    
+    patron_type_code int NOT NULL,
+    home_library_code varchar(30) NOT NULL,
+    notification_code varchar(10) NOT NULL,
+    
+    FOREIGN KEY (patron_type_code) REFERENCES patron_types(patron_type_code),
+    FOREIGN KEY (home_library_code) REFERENCES libraries(library_code),
+    FOREIGN KEY (notification_code) REFERENCES notification_modes(notification_code)
+	);
+    
