@@ -1,5 +1,9 @@
 Set Up:
-To begin we start with the creation of the tables inside of MySQL. The first thing I usually do is "DROP SCHEMA IF EXISTS (YourProjectHere)". This means it will create a new schema to run every time you execute the script. I then do "CREATE SCHEMA (YourProjectHere)" to create a new schema to store the tables in. Then you do "USE (YourProjectHere)" to make sure the next few queries actually put the created tables into the correct schema. 
+To begin we start with the creation of the tables inside of MySQL. 
+The first thing I usually do is "DROP SCHEMA IF EXISTS (YourProjectHere)". 
+This means it will create a new schema to run every time you execute the script. 
+I then do "CREATE SCHEMA (YourProjectHere)" to create a new schema to store the tables in. 
+Then you do "USE (YourProjectHere)" to make sure the next few queries actually put the created tables into the correct schema. 
 
 Table to Make:
 The four tables we should make are the "patron_types" table, "libraries" table, "notification_modes" table, and the "patron_profiles" tables. 
@@ -14,6 +18,9 @@ The "libraries" table will have two coloumns, "library_code" which will be a var
 The "notification_modes" table will have two coloumns, "notification_code" which will be a varchar and "notification_desc" which will also be a varchar. "notification_code" will be a primary key as well.
 
 "patron_profiles" Table: 
-The final table will be "patron_profiles". This table will have eight coloumns with three foreign keys. The first coloumn will be "profile_id" which will be an integer that auto increments. The second will be "age_range" and it is a varchar. The third is "total_checkouts" and an integer. The fourth is "total_renewals" and it is an integer. The fifth is "year_registered" and it will be an integer. The sixth will be "sf_resident" and it will be a boolean. The seventh will be "has_email" and it will be a boolean. And the eighth will be "last_active" and it will be a date. The three foreign keys that will be linked to this table are "patron_type_code" from "patron types", "home_library_code" from "libraries", and "notification_code" from "notification_modes".
+The final table will be "patron_profiles". This table will have eight coloumns with three foreign keys. The first coloumn will be "profile_id" which will be an integer that auto increments. 
+The second will be "age_range" and it is a varchar. The third is "total_checkouts" and an integer. The fourth is "total_renewals" and it is an integer. The fifth is "year_registered" and it will be an integer. 
+The sixth will be "sf_resident" and it will be a boolean. The seventh will be "has_email" and it will be a boolean. And the eighth will be "last_active" and it will be a date. 
+The three foreign keys that will be linked to this table are "patron_type_code" from "patron types", "home_library_code" from "libraries", and "notification_code" from "notification_modes".
 
 With that you should have the entire inital framework in place, next we need to move the data from "SFPL_DataSF_library-usage_Jan_2023.xlsx" into our desired tables.
